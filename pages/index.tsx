@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import pdf from "pdf-parse";
 
-const Home: NextPage = ({ days }) => {
+const Home: NextPage<{ days: string[][] }> = ({ days }) => {
   return (
     <div className="container mx-auto p-4">
       <Head>
