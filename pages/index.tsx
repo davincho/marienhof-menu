@@ -46,7 +46,7 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
+    "public, s-maxage=10, stale-while-revalidate=604800"
   );
 
   const dataBuffer = await fetch(
