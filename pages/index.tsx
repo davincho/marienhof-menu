@@ -2,8 +2,9 @@ import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 
 import GithubCorner from "react-github-corner";
-import { repository } from "./../package.json";
 import pdf from "pdf-parse";
+
+const { repository } = require("./../package.json");
 
 const weekdayStrings = [
   "Montag",
@@ -75,7 +76,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   for (const line of lines) {
     const weekdaySearch = weekdayStrings[weekdayCount];
 
-    console.log("line", line);
     if (line.startsWith("Menüplan")) {
       // Date info
       weekDateRange = line.split("Menüplan")[1].replace(/ /g, "").trim();
@@ -125,8 +125,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       item.split("€").map((item) => item.trim())
     );
   });
-
-  console.log("weekDateRange", weekDateRange);
 
   return {
     props: { days: fixedDays, weekDateRange },
