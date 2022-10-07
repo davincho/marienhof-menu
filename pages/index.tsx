@@ -3,7 +3,18 @@ import Head from "next/head";
 
 import pdf from "pdf-parse";
 
-const Home: NextPage<{ days: string[][] }> = ({ days }) => {
+const weekdayStrings = [
+  "Montag",
+  "Dienstag",
+  "Mittwoch",
+  "Donnerstag",
+  "Freitag",
+];
+
+const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
+  days,
+  weekDateRange,
+}) => {
   return (
     <div className="container mx-auto p-4">
       <Head>
@@ -14,11 +25,20 @@ const Home: NextPage<{ days: string[][] }> = ({ days }) => {
 
       <h1 className="text-3xl text-center">🧑🏼‍🍳 Marienhof Menu 🧑🏼‍🍳</h1>
 
-      {days.map((day, index) => (
-        <div key={index}>
-          <pre>{JSON.stringify(day, null, 2)}</pre>
-        </div>
-      ))}
+      <div className="md:w-3/4 mx-auto mt-8">
+        <h2>Menü für {weekDateRange}</h2>
+        {days.map((day, index) => (
+          <div key={index}>
+            <h2 className="text-2xl pt-2">{weekdayStrings[index]}</h2>
+            {day.map(([name, price], index) => (
+              <div key={index} className="flex justify-between">
+                <div>{name}</div>
+                <div className="ml-2 flex-none text-right">€ {price}</div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -34,14 +54,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   );
   const blobContent = await dataBuffer.arrayBuffer();
 
-  const weekdayStrings = [
-    "Montag",
-    "Dienstag",
-    "Mittwoch",
-    "Donnerstag",
-    "Freitag",
-  ];
-
   const weekdaysMenu = [];
 
   const data = (await pdf(Buffer.from(blobContent))) as { text: string };
@@ -55,12 +67,15 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     .map((str) => str.trim().replace(/  +/g, " "))
     .filter(Boolean);
 
+  let weekDateRange = "";
+
   for (const line of lines) {
     const weekdaySearch = weekdayStrings[weekdayCount];
 
-    if (line === "Menüplan") {
+    console.log("line", line);
+    if (line.startsWith("Menüplan")) {
       // Date info
-      console.log(line);
+      weekDateRange = line.split("Menüplan")[1].replace(/ /g, "").trim();
     } else if (line.replaceAll(" ", "") === weekdaySearch) {
       if (collector.length > 0) {
         weekdaysMenu.push(collector);
@@ -77,38 +92,41 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     }
   }
 
-  console.log("weekdaysMenu", weekdaysMenu);
-
   // fix some line breaks
 
   const fixedDays = weekdaysMenu.map((weekday) => {
-    if (weekday.length === 3) {
-      return weekday;
-    }
+    let fixedMenutItems = [];
 
-    const fixedMenutItems = [];
+    if (weekday.length > 3) {
+      let concatMenu = [];
 
-    let concatMenu = [];
-
-    for (const menu of weekday) {
-      if (menu.indexOf("€") > -1) {
-        if (concatMenu.length === 0) {
-          fixedMenutItems.push(menu);
+      for (const menu of weekday) {
+        if (menu.indexOf("€") > -1) {
+          if (concatMenu.length === 0) {
+            fixedMenutItems.push(menu);
+          } else {
+            concatMenu.push(menu);
+            fixedMenutItems.push(concatMenu.join(", "));
+            concatMenu = [];
+          }
         } else {
           concatMenu.push(menu);
-          fixedMenutItems.push(concatMenu.join(", "));
-          concatMenu = [];
         }
-      } else {
-        concatMenu.push(menu);
       }
+    } else {
+      fixedMenutItems = weekday;
     }
 
-    return fixedMenutItems;
+    // Now split price apart
+    return fixedMenutItems.map((item) =>
+      item.split("€").map((item) => item.trim())
+    );
   });
 
+  console.log("weekDateRange", weekDateRange);
+
   return {
-    props: { days: fixedDays },
+    props: { days: fixedDays, weekDateRange },
   };
 };
 
