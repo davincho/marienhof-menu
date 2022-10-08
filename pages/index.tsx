@@ -58,7 +58,7 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=604800"
+    "public, s-maxage=1, stale-while-revalidate=59"
   );
 
   res.setHeader("X-Foo", "Bar");
