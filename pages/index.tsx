@@ -1,6 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-
 import pdf from "pdf-parse";
 
 const { repository } = require("./../package.json");
@@ -29,11 +28,11 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
 
       <div className="md:w-3/4 mx-auto my-8">
         <h2>Menü für {weekDateRange}</h2>
-        {days.map((day, index) => (
-          <div key={index}>
-            <h2 className="text-2xl pt-2">{weekdayStrings[index]}</h2>
-            {day.map(([name, price], index) => (
-              <div key={index} className="flex justify-between">
+        {days.map((day, dayIndex) => (
+          <div key={dayIndex}>
+            <h2 className="text-2xl pt-2">{weekdayStrings[dayIndex]}</h2>
+            {day.map(([name, price], menuIndex) => (
+              <div key={menuIndex} className="flex justify-between">
                 <div>{name}</div>
                 <div className="ml-2 flex-none text-right">€ {price}</div>
               </div>
@@ -56,7 +55,7 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader(
     "Cache-Control",
     "public, s-maxage=10, stale-while-revalidate=604800"
