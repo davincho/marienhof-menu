@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import pdf from "pdf-parse";
 
-const { repository } = require("./../package.json");
+import { repository } from "./../package.json";
 
 const weekdayStrings = [
   "Montag",
@@ -114,7 +114,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       let concatMenu = [];
 
       for (const menu of weekday) {
-        if (menu.indexOf("€") > -1) {
+        if (menu.includes("€")) {
           if (concatMenu.length === 0) {
             fixedMenutItems.push(menu);
           } else {
