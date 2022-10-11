@@ -97,7 +97,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       collector = [];
       startCollecting = true;
       weekdayCount++;
-    } else if (line.startsWith("V WOCHENEMPFEHLUNG")) {
+    } else if (line.includes("WOCHENEMPFEHLUNG")) {
       weekdaysMenu.push(collector);
       startCollecting = false;
     } else if (startCollecting) {
