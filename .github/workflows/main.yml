@@ -1,0 +1,13 @@
+name: "Hit a webhook"
+ 
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+ 
+jobs:
+  run-updater:
+    runs-on: ubuntu-latest
+    steps:
+    - name: REST API with curl
+      run: |
+        curl -X GET "https://marienify.vercel.app/api/revalidate?secret=${MY_SECRET_TOKEN}"
