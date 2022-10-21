@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import pdf from "pdf-parse";
 
@@ -40,29 +40,27 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
           </div>
         ))}
       </div>
-      <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100">
-        Developed with ❤️ in Vienna -{" "}
-        <a
-          className="underline decoration-sky-500 semi-bold hover:text-sky-500"
-          href={repository}
-          rel="noreferrer"
-          target="_blank"
-        >
-          GitHub
-        </a>
+      <div className="fixed bottom-0 left-0 right-0 flex p-2 bg-gray-100">
+        <div className="flex-1 text-gray-400">
+          Last generated: {new Date().toLocaleString("de")}
+        </div>
+        <div className="flex-1 text-right">
+          Developed with ❤️ in Vienna -{" "}
+          <a
+            className="underline decoration-sky-500 semi-bold hover:text-sky-500"
+            href={repository}
+            rel="noreferrer"
+            target="_blank"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1, stale-while-revalidate=59"
-  );
-
-  res.setHeader("X-Foo", "Bar");
-
+export const getStaticProps: GetStaticProps = async () => {
   const dataBuffer = await fetch(
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf"
   );
@@ -138,6 +136,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   return {
     props: { days: fixedDays, weekDateRange },
+    revalidate: 3600, // In seconds
   };
 };
 
