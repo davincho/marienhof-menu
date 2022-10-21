@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import pdf from "pdf-parse";
 
@@ -136,7 +136,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { days: fixedDays, weekDateRange },
-    revalidate: 3600, // In seconds
   };
 };
 
