@@ -12,10 +12,11 @@ const weekdayStrings = [
   "Freitag",
 ];
 
-const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
-  days,
-  weekDateRange,
-}) => {
+const Home: NextPage<{
+  days: string[][][];
+  weekDateRange: string;
+  timestamp: string;
+}> = ({ days, weekDateRange, timestamp }) => {
   return (
     <div className="container mx-auto p-4">
       <Head>
@@ -41,7 +42,7 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
         ))}
 
         <div className="flex-1 text-gray-400 pt-4 text-xs">
-          Last generated: {new Date().toLocaleString("de")}
+          Last generated: {timestamp}
         </div>
       </div>
 
@@ -135,7 +136,11 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return {
-    props: { days: fixedDays, weekDateRange },
+    props: {
+      days: fixedDays,
+      weekDateRange,
+      timestamp: new Date().toLocaleString("de"),
+    },
   };
 };
 
