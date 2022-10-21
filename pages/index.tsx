@@ -39,22 +39,22 @@ const Home: NextPage<{ days: string[][][]; weekDateRange: string }> = ({
             ))}
           </div>
         ))}
-      </div>
-      <div className="fixed bottom-0 left-0 right-0 flex p-2 bg-gray-100">
-        <div className="flex-1 text-gray-400">
+
+        <div className="flex-1 text-gray-400 pt-4 text-xs">
           Last generated: {new Date().toLocaleString("de")}
         </div>
-        <div className="flex-1 text-right">
-          Developed with ❤️ in Vienna -{" "}
-          <a
-            className="underline decoration-sky-500 semi-bold hover:text-sky-500"
-            href={repository}
-            rel="noreferrer"
-            target="_blank"
-          >
-            GitHub
-          </a>
-        </div>
+      </div>
+
+      <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100">
+        Developed with ❤️ in Vienna -{" "}
+        <a
+          className="underline decoration-sky-500 semi-bold hover:text-sky-500"
+          href={repository}
+          rel="noreferrer"
+          target="_blank"
+        >
+          GitHub
+        </a>
       </div>
     </div>
   );
