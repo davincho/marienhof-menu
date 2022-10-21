@@ -5,6 +5,7 @@ on: workflow_dispatch
 jobs:
   run-updater:
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: REST API with curl
       env: # Or as an environment variable 
