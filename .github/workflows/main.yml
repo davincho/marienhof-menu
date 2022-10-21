@@ -7,5 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: REST API with curl
+      env: # Or as an environment variable 
+         MY_SECRET_TOKEN: ${{ secrets.MY_SECRET_TOKEN }}
       run: |
-        curl -X GET "https://marienify.vercel.app/api/revalidate?secret=${env.MY_SECRET_TOKEN}"
+        curl -X GET "https://marienify.vercel.app/api/revalidate?secret=$MY_SECRET_TOKEN"
