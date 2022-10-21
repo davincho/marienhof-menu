@@ -8,4 +8,4 @@ jobs:
     steps:
     - name: REST API with curl
       run: |
-        curl -X GET "https://marienify.vercel.app/api/revalidate?secret=${{ env.MY_SECRET_TOKEN }}"
+        curl -X GET "https://marienify.vercel.app/api/revalidate?secret=${env.MY_SECRET_TOKEN}"
