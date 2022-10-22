@@ -1,7 +1,9 @@
-name: "Hit a webhook"
+name: Update every monday morning
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7,10 * * 1"
 
-on: workflow_dispatch
- 
 jobs:
   run-updater:
     runs-on: ubuntu-latest
