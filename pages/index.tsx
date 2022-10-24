@@ -139,7 +139,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       days: fixedDays,
       weekDateRange,
-      timestamp: new Date().toLocaleString("de"),
+      timestamp: new Date().toLocaleString("de", { timeZone: "Europe/Vienna" }),
     },
   };
 };
