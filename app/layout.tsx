@@ -10,7 +10,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Next.js</title>
+        <title>Marienhof Menu</title>
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body>{children}</body>
     </html>
