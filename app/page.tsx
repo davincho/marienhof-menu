@@ -1,8 +1,7 @@
-import fs from "node:fs/promises";
-
-import pdf from "pdf-parse/lib/pdf-parse";
+import https from "node:http";
 
 import HomePage from "./HomePage";
+import pdf from "./pdfShim";
 
 const weekdayStrings = [
   "Montag",
@@ -12,21 +11,29 @@ const weekdayStrings = [
   "Freitag",
 ];
 
+export const revalidate = 3600;
+
 const getMenu = async () => {
-  const dataBuffer = fs.readFile("./wochenmenue.pdf");
+  const pdfContent = await new Promise<Uint8Array>((resolve) => {
+    https.get(
+      "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
+      (response) => {
+        const buffer: Uint8Array[] = [];
 
-  /* const dataBuffer = await fetch(
-    "http://localhost:62790/wochenmenue.pdf"
-    // "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf"
-    // "https://jsonplaceholder.typicode.com/todos/1"
-  );*/
+        response.on("data", (res) => {
+          buffer.push(res);
+        });
 
-  const blobContent = await fs.readFile("./wochenmenue.pdf");
-  // const blobContent = await dataBuffer.arrayBuffer();
+        response.on("end", () => {
+          resolve(Buffer.concat(buffer));
+        });
+      }
+    );
+  });
 
   const weekdaysMenu = [];
 
-  const data = (await pdf(Buffer.from(blobContent))) as { text: string };
+  const data = (await pdf(Buffer.from(pdfContent))) as { text: string };
 
   let weekdayCount = 0;
 
