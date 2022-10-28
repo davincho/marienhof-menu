@@ -1,5 +1,3 @@
-import https from "node:http";
-
 import HomePage from "./HomePage";
 import pdf from "./pdfShim";
 
@@ -11,29 +9,21 @@ const weekdayStrings = [
   "Freitag",
 ];
 
-export const revalidate = 3600;
-
 const getMenu = async () => {
-  const pdfContent = await new Promise<Uint8Array>((resolve) => {
-    https.get(
-      "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
-      (response) => {
-        const buffer: Uint8Array[] = [];
+  const dataBuffer = await fetch(
+    "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
+    {
+      next: {
+        revalidate: 3600,
+      },
+    }
+  );
 
-        response.on("data", (res) => {
-          buffer.push(res);
-        });
-
-        response.on("end", () => {
-          resolve(Buffer.concat(buffer));
-        });
-      }
-    );
-  });
+  const blobContent = await dataBuffer.arrayBuffer();
 
   const weekdaysMenu = [];
 
-  const data = (await pdf(Buffer.from(pdfContent))) as { text: string };
+  const data = (await pdf(Buffer.from(blobContent))) as { text: string };
 
   let weekdayCount = 0;
 
