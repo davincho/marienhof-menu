@@ -12,6 +12,8 @@ export default function RootLayout({
       <head>
         <title>Marienhof Menu</title>
         <link rel="icon" href="/favicon.png" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width" />
       </head>
       <body>{children}</body>
     </html>
