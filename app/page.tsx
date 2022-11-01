@@ -14,7 +14,7 @@ const getMenu = async () => {
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
     {
       next: {
-        revalidate: 3600,
+        revalidate: 60,
       },
     }
   );
