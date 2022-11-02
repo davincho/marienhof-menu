@@ -9,14 +9,11 @@ const weekdayStrings = [
   "Freitag",
 ];
 
+export const revalidate = 3600;
+
 const getMenu = async () => {
   const dataBuffer = await fetch(
-    "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
+    "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf"
   );
 
   const blobContent = await dataBuffer.arrayBuffer();
