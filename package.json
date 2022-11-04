@@ -12,7 +12,7 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
-    "next": "13.0.1",
+    "next": "13.0.2",
     "pdf-parse": "^1.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -21,12 +21,12 @@
     "@dvnch/eslint-config": "^3.1.1",
     "@types/node": "18.11.9",
     "@types/pdf-parse": "^1.1.1",
-    "@types/react": "18.0.24",
+    "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.5.0",
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.1",
+    "eslint-config-next": "13.0.2",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.2.1",
