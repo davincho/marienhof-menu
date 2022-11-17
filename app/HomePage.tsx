@@ -29,7 +29,15 @@ const Home: NextPage<{
       <h1 className="text-3xl text-center">🧑🏼‍🍳 Marienhof Menu 🧑🏼‍🍳</h1>
 
       <div className="md:w-3/4 mx-auto my-8">
-        <h2>Menü für {weekDateRange}</h2>
+        <div className="flex justify-between items-center">
+          <h2>Menü für {weekDateRange}</h2>
+          <a
+            href="tel:+431408890530"
+            className="semi-bold p-2 border border-sky-100 rounded-md hover:border-sky-300 active:bg-slate-200"
+          >
+            ☎️ Call
+          </a>
+        </div>
         {days.map((day, dayIndex) => (
           <div key={dayIndex}>
             <h2 className="text-2xl pt-2">{weekdayStrings[dayIndex]}</h2>
