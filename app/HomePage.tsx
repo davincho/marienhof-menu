@@ -13,6 +13,23 @@ const weekdayStrings = [
   "Freitag",
 ];
 
+const cleanser: [RegExp, string][] = [
+  [/(\S)mit /, "$1 mit "],
+  [/ mit(\S)/, " mit $1"],
+  [/(\S)& /, "$1 & "],
+];
+
+const replace = (name: string) => {
+  let cleansed = name;
+
+  for (const clean of cleanser) {
+    const [pattern, substitute] = clean;
+    cleansed = cleansed.replace(pattern, substitute);
+  }
+
+  return cleansed;
+};
+
 const Home: NextPage<{
   days: string[][][];
   weekDateRange: string;
@@ -43,7 +60,7 @@ const Home: NextPage<{
             <h2 className="text-2xl pt-2">{weekdayStrings[dayIndex]}</h2>
             {day.map(([name, price], menuIndex) => (
               <div key={menuIndex} className="flex justify-between">
-                <div>{name}</div>
+                <div>{replace(name)}</div>
                 <div className="ml-2 flex-none text-right">€ {price}</div>
               </div>
             ))}
@@ -56,9 +73,9 @@ const Home: NextPage<{
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100">
-        Developed with ❤️ in Vienna -{" "}
+        Developed with ❤️ in Vienna -
         <a
-          className="underline decoration-sky-500 semi-bold hover:text-sky-500"
+          className="underline decoration-sky-500 semi-bold hover:text-sky-500 pl-1"
           href={repository}
           rel="noreferrer"
           target="_blank"
