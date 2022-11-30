@@ -96,6 +96,13 @@ export default async function Page() {
   const { days, timestamp, weekDateRange } = await getMenu();
 
   return (
-    <HomePage days={days} weekDateRange={weekDateRange} timestamp={timestamp} />
+    <HomePage
+      title="Marienhof Menu"
+      emoji="🧑🏼‍🍳"
+      telNumber="+431408890530"
+      days={days}
+      weekDateRange={weekDateRange}
+      timestamp={timestamp}
+    />
   );
 }
