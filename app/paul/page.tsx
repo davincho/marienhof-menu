@@ -89,8 +89,8 @@ const getMenu = async () => {
         if (menuCateogry) {
           if (dayCollector.length > 0) {
             fixedWeekDay.push([
-              `${dayCollector[0]} - ${dayCollector[1]}`,
-              dayCollector[2],
+              dayCollector.slice(0, -1).join(" "),
+              dayCollector[dayCollector.length - 1],
             ]);
             dayCollector = [];
           }
