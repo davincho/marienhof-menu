@@ -49,7 +49,7 @@ const getMenu = async () => {
       collector = [];
       startCollecting = true;
       weekdayCount++;
-    } else if (line.includes("WOCHENEMPFEHLUNG")) {
+    } else if (line.includes("Allergieinformation")) {
       weekdaysMenu.push(collector);
       startCollecting = false;
     } else if (startCollecting) {
@@ -77,7 +77,7 @@ const getMenu = async () => {
     for (const part of weekday) {
       const result =
         // eslint-disable-next-line unicorn/better-regex
-        /(INTERNATIONAL|SUPPE|WIENER KÜCHE|PASTA)?(\D*)?([0-9.]+ €)?/d.exec(
+        /(INTERNATIONAL|SUPPE|WIENER KÜCHE|PASTA|FISCH)?(\D*)?([0-9.]+ €)?/d.exec(
           part
         );
 
@@ -106,6 +106,13 @@ const getMenu = async () => {
           dayCollector.push(part.slice(...menuPrice));
         }
       }
+    }
+
+    if (dayCollector.length > 0) {
+      fixedWeekDay.push([
+        `${dayCollector[0]} - ${dayCollector[1]}`,
+        dayCollector[2],
+      ]);
     }
 
     return fixedWeekDay;
