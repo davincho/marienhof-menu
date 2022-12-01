@@ -698,6 +698,11 @@ video {
   background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
+.bg-violet-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 181 253 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -778,6 +783,11 @@ video {
 .text-blue-900 {
   --tw-text-opacity: 1;
   color: rgb(30 58 138 / var(--tw-text-opacity));
+}
+
+.text-violet-900 {
+  --tw-text-opacity: 1;
+  color: rgb(76 29 149 / var(--tw-text-opacity));
 }
 
 .underline {
