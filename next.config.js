@@ -8,7 +8,7 @@ const nextConfig = {
   rewrites: async () => {
     return [
       {
-        source: "/*",
+        source: "/:path*",
         has: [
           {
             type: "host",
