@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -13,23 +15,6 @@ const weekdayStrings = [
   "Freitag",
 ];
 
-const cleanser: [RegExp, string][] = [
-  [/(\S)mit /, "$1 mit "],
-  [/ mit(\S)/, " mit $1"],
-  [/(\S)& /, "$1 & "],
-];
-
-const replace = (name: string) => {
-  let cleansed = name;
-
-  for (const clean of cleanser) {
-    const [pattern, substitute] = clean;
-    cleansed = cleansed.replace(pattern, substitute);
-  }
-
-  return cleansed;
-};
-
 const Home: NextPage<{
   days: string[][][];
   weekDateRange: string;
@@ -37,7 +22,16 @@ const Home: NextPage<{
   title: string;
   emoji: string;
   telNumber?: string;
-}> = ({ days, weekDateRange, timestamp, title, emoji, telNumber }) => {
+  menuRenderer: (menu: string[]) => React.ReactElement;
+}> = ({
+  days,
+  weekDateRange,
+  timestamp,
+  title,
+  emoji,
+  telNumber,
+  menuRenderer,
+}) => {
   return (
     <div className="container mx-auto p-4">
       <Head>
@@ -65,10 +59,9 @@ const Home: NextPage<{
         {days.map((day, dayIndex) => (
           <div key={dayIndex}>
             <h2 className="text-2xl pt-2">{weekdayStrings[dayIndex]}</h2>
-            {day.map(([name, price], menuIndex) => (
+            {day.map((menu, menuIndex) => (
               <div key={menuIndex} className="flex justify-between">
-                <div>{replace(name)}</div>
-                <div className="ml-2 flex-none text-right">€ {price}</div>
+                {menuRenderer(menu)}
               </div>
             ))}
           </div>
