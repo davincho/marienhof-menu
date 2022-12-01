@@ -17,16 +17,16 @@ const nextConfig = {
         ],
         destination: "/paul",
       },
-      {
-        source: "/*",
-        has: [
-          {
-            type: "host",
-            value: "marienify.vercel.app",
-          },
-        ],
-        destination: "/marie",
-      },
+      // {
+      //   source: "/*",
+      //   has: [
+      //     {
+      //       type: "host",
+      //       value: "marienify.vercel.app",
+      //     },
+      //   ],
+      //   destination: "/marie",
+      // },
     ];
   },
 };
