@@ -8,7 +8,7 @@ const nextConfig = {
   rewrites: async () => {
     return [
       {
-        source: "*",
+        source: "/*",
         has: [
           {
             type: "host",
@@ -18,11 +18,11 @@ const nextConfig = {
         destination: "/paul",
       },
       {
-        source: "*",
+        source: "/*",
         has: [
           {
             type: "host",
-            value: "marinify.vercel.app",
+            value: "marienify.vercel.app",
           },
         ],
         destination: "/marie",
