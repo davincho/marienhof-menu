@@ -8,7 +8,7 @@ const nextConfig = {
   rewrites: async () => {
     return [
       {
-        source: "/:path*",
+        source: "*",
         has: [
           {
             type: "host",
@@ -18,7 +18,7 @@ const nextConfig = {
         destination: "/paul",
       },
       {
-        source: "/:path*",
+        source: "*",
         has: [
           {
             type: "host",
