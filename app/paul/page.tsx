@@ -1,7 +1,7 @@
-import { paulRenderer } from "../render";
+import HomePage from "../../components/HomePage";
+import { paulRenderer } from "../../utils/render";
 
 import parser from "./../../utils/paul.parse";
-import HomePage from "./../HomePage";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {

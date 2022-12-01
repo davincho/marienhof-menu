@@ -5,7 +5,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { repository } from "./../package.json";
+import { repository } from "../package.json";
 
 const weekdayStrings = [
   "Montag",

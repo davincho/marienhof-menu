@@ -1,7 +1,7 @@
-import { marienRenderer } from "../render";
+import HomePage from "../../components/HomePage";
+import { marienRenderer } from "../../utils/render";
 
 import parser from "./../../utils/marify.parse";
-import HomePage from "./../HomePage";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
