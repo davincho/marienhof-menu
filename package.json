@@ -13,6 +13,7 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
+    "@next/font": "^13.0.6",
     "next": "13.0.5",
     "pdf-parse": "^1.1.1",
     "react": "18.2.0",

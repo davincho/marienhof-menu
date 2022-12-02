@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { isProduction } from "./utils/env";
+
 const VALID_DOMAINS = new Map<string, string>([
   ["paulify.vercel.app", "/paul"],
   ["marienify.vercel.app", "/marie"],
 ]);
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
+  if (!isProduction) {
+    return;
+  }
+
   if (request.nextUrl.pathname === "/") {
     // Make subdomain redirects manually here, as redirect/rewrite functionality via
     // next.config.js does not work with root URLs 🤷🏽

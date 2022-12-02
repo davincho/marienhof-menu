@@ -6,7 +6,12 @@ module.exports = {
     "./utils/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: "var(--font-rubik)",
+        body: "var(--font-workSans)",
+      },
+    },
   },
   plugins: [],
 };

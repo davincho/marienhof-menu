@@ -4,8 +4,11 @@ import React from "react";
 
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import { repository } from "../package.json";
+
+import { isProduction } from "./../utils/env";
 
 const weekdayStrings = [
   "Montag",
@@ -40,11 +43,19 @@ const Home: NextPage<{
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <h1 className="text-3xl text-center">
-        {emoji} {title} {emoji}
-      </h1>
+      <div className="md:w-3/4 mx-auto mb-8">
+        <div className="mb-8 relative">
+          <Link
+            className="border rounded-md absolute p-2 border-gray-200 hover:border-gray-500"
+            href={isProduction ? "https://iamhungry.vercel.app" : "/"}
+          >
+            👈🏻 back
+          </Link>
+          <h1 className="text-3xl text-center font-heading">
+            {emoji} {title} {emoji}
+          </h1>
+        </div>
 
-      <div className="md:w-3/4 mx-auto my-8">
         <div className="flex justify-between items-center">
           <h2>Menü für {weekDateRange}</h2>
           {telNumber ? (
@@ -58,7 +69,9 @@ const Home: NextPage<{
         </div>
         {days.map((day, dayIndex) => (
           <div key={dayIndex}>
-            <h2 className="text-2xl pt-2">{weekdayStrings[dayIndex]}</h2>
+            <h2 className="text-2xl pt-2 font-heading">
+              {weekdayStrings[dayIndex]}
+            </h2>
             {day.map((menu, menuIndex) => (
               <div key={menuIndex} className="flex justify-between">
                 {menuRenderer(menu)}

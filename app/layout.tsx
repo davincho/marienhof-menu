@@ -1,4 +1,18 @@
+import { Rubik_Distressed, Work_Sans } from "@next/font/google";
+
 import "./global.css";
+
+const rubik = Rubik_Distressed({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-rubik",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-workSans",
+});
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -17,7 +31,9 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
       </head>
-      <body>{children}</body>
+      <body className={`${rubik.variable} ${workSans.variable} font-body`}>
+        {children}
+      </body>
     </html>
   );
 }
