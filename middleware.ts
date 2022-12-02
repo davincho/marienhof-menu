@@ -17,7 +17,7 @@ export function middleware(request: NextRequest) {
     const redirectUrl = VALID_DOMAINS.get(hostname);
 
     if (redirectUrl) {
-      return NextResponse.redirect(
+      return NextResponse.rewrite(
         new URL(redirectUrl, "https://iamhungry.vercel.app")
       );
     }
