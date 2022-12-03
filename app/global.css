@@ -640,6 +640,14 @@ video {
   width: 80px;
 }
 
+.w-\[1000px\] {
+  width: 1000px;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
