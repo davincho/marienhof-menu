@@ -13,26 +13,26 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
-    "@next/font": "^13.0.6",
-    "next": "13.0.5",
+    "@next/font": "^13.0.7",
+    "next": "13.0.7",
     "pdf-parse": "^1.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@dvnch/eslint-config": "^3.1.1",
-    "@types/node": "18.11.10",
+    "@types/node": "18.11.17",
     "@types/pdf-parse": "^1.1.1",
-    "@types/react": "18.0.25",
+    "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.6.0",
-    "eslint": "8.28.0",
-    "eslint-config-next": "13.0.5",
-    "postcss": "^8.4.19",
-    "prettier": "^2.8.0",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.0.7",
+    "postcss": "^8.4.20",
+    "prettier": "^2.8.1",
     "tailwindcss": "^3.2.4",
-    "typescript": "4.9.3",
-    "vitest": "^0.25.3"
+    "typescript": "4.9.4",
+    "vitest": "^0.26.2"
   }
 }
