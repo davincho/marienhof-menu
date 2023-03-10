@@ -1,0 +1,12 @@
+{
+    "crons": [
+      {
+        "path": "/marie",
+        "schedule": "0 5,8 * * 1"
+      },
+      {
+        "path": "/paul",
+        "schedule": "0 5,8 * * 1"
+      }
+    ]
+  }
