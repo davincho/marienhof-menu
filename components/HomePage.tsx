@@ -6,7 +6,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
-import { repository } from "../package.json";
+import pgk from "../package.json";
 
 import { isProduction } from "./../utils/env";
 
@@ -17,6 +17,8 @@ const weekdayStrings = [
   "Donnerstag",
   "Freitag",
 ];
+
+const { repository } = pgk;
 
 const Home: NextPage<{
   days: string[][][];
