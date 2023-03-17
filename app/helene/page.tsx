@@ -32,9 +32,10 @@ const getMenu = async () => {
 
   let collector = [];
 
-  const weekDateRange = root
-    .querySelector("#content h1.csc-firstHeader")
-    ?.textContent.replace("Menükarte ", "");
+  const weekDateRange =
+    root
+      .querySelector("#content h1.csc-firstHeader")
+      ?.textContent.replace("Menükarte ", "") ?? "";
 
   for (const row of rows) {
     const nextDay = weekdayStrings[weekdayCount];
