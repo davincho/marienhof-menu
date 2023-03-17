@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { parse } from "node-html-parser";
 
 import HomePage from "../../components/HomePage";
@@ -15,7 +16,6 @@ const url =
   "https://corsproxy.io/?https%3A%2F%2Fwww.frommehelene.at%2Findex.php%3Fid%3D15";
 
 const getMenu = async () => {
-  // eslint-disable-next-line no-console
   console.log(`Fetching data from ${url}`);
 
   const result = await fetch(
