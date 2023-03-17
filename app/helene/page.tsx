@@ -11,11 +11,17 @@ const weekdayStrings = [
   "Freitag",
 ];
 
+const url =
+  "https://corsproxy.io/?https%3A%2F%2Fwww.frommehelene.at%2Findex.php%3Fid%3D15";
+
 const getMenu = async () => {
+  // eslint-disable-next-line no-console
+  console.log(`Fetching data from ${url}`);
+
   const result = await fetch(
     // Calling https://www.frommehelene.at/index.php?id=15 directly causes some SSL issues
     // as the certificate trust chain of this website is broken
-    "https://corsproxy.io/?https%3A%2F%2Fwww.frommehelene.at%2Findex.php%3Fid%3D15",
+    url,
     {
       next: { revalidate: 3600 },
     }
