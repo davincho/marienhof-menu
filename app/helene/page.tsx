@@ -27,6 +27,11 @@ const getMenu = async () => {
     }
   );
 
+  if (!result.ok) {
+    console.error(result);
+    throw new Error(`Could not fetch from ${url}`);
+  }
+
   const html = await result.text();
 
   const root = parse(html);
