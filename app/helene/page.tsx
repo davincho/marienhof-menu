@@ -34,6 +34,8 @@ const getMenu = async () => {
 
   const html = await result.text();
 
+  console.info("HTML", html);
+
   const root = parse(html);
 
   const rows = root.querySelectorAll("table.contenttable tr");
