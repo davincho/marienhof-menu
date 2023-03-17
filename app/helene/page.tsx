@@ -43,6 +43,8 @@ const getMenu = async () => {
       .querySelector("#content h1.csc-firstHeader")
       ?.textContent.replace("Menükarte ", "") ?? "";
 
+  console.log(`Found ${rows.length} rows to process`);
+
   for (const row of rows) {
     const nextDay = weekdayStrings[weekdayCount];
 
@@ -64,6 +66,8 @@ const getMenu = async () => {
   if (collector.length > 0) {
     days.push(collector);
   }
+
+  console.log(`Days data collected: ${JSON.stringify(days)}`);
 
   return {
     days,
