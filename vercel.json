@@ -7,10 +7,6 @@
       {
         "path": "/paul",
         "schedule": "0 5 * * *"
-      },
-      {
-        "path": "/helene",
-        "schedule": "0 5 * * *"
       }
     ]
   }
