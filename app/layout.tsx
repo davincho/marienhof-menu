@@ -1,4 +1,5 @@
 import { Rubik_Distressed, Work_Sans } from "@next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./global.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
       </head>
       <body className={`${rubik.variable} ${workSans.variable} font-body`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
