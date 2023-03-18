@@ -13,7 +13,7 @@ const weekdayStrings = [
 ];
 
 const url =
-  "https://corsproxy.io/?https%3A%2F%2Fwww.frommehelene.at%2Findex.php%3Fid%3D15";
+  "https://thingproxy.freeboard.io/fetch/https://www.frommehelene.at/index.php?id=15";
 
 const getMenu = async () => {
   console.log(`Fetching data from ${url}`);
@@ -33,8 +33,6 @@ const getMenu = async () => {
   }
 
   const html = await result.text();
-
-  console.info("HTML", html);
 
   const root = parse(html);
 
