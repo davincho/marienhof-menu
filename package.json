@@ -13,9 +13,8 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
-    "@next/font": "^13.3.4",
     "@vercel/analytics": "^1.0.1",
-    "next": "13.3.4",
+    "next": "13.4.0",
     "node-html-parser": "^6.1.5",
     "pdf-parse": "^1.1.1",
     "react": "18.2.0",
@@ -30,11 +29,11 @@
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.3.4",
+    "eslint-config-next": "13.4.0",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
     "tailwindcss": "^3.3.2",
-    "typescript": "5.0.4",
+    "typescript": "4.9.5",
     "vitest": "^0.31.0"
   }
 }

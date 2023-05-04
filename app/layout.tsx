@@ -1,5 +1,5 @@
-import { Rubik_Distressed, Work_Sans } from "@next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { Rubik_Distressed, Work_Sans } from "next/font/google";
 
 import "./global.css";
 
