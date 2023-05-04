@@ -4,8 +4,8 @@
   "repository": "https://github.com/davincho/marienhof-menu",
   "private": true,
   "scripts": {
-    "dev": "concurrently 'pnpm css:dev' 'next dev'",
-    "build": "pnpm css:build && next build",
+    "dev": "concurrently 'pnpm css:dev' 'next dev --turbo'",
+    "build": "pnpm css:build && next build --turbo",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
@@ -13,9 +13,9 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
-    "@next/font": "^13.2.4",
-    "@vercel/analytics": "^0.1.11",
-    "next": "13.2.4",
+    "@next/font": "^13.3.4",
+    "@vercel/analytics": "^1.0.1",
+    "next": "13.3.4",
     "node-html-parser": "^6.1.5",
     "pdf-parse": "^1.1.1",
     "react": "18.2.0",
@@ -23,18 +23,18 @@
   },
   "devDependencies": {
     "@dvnch/eslint-config": "^3.1.1",
-    "@types/node": "18.15.0",
+    "@types/node": "18.16.3",
     "@types/pdf-parse": "^1.1.1",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "18.2.5",
+    "@types/react-dom": "18.2.3",
     "autoprefixer": "^10.4.14",
-    "concurrently": "^7.6.0",
-    "eslint": "8.35.0",
-    "eslint-config-next": "13.2.4",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.4",
-    "tailwindcss": "^3.2.7",
-    "typescript": "4.9.5",
-    "vitest": "^0.29.2"
+    "concurrently": "^8.0.1",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.4",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4",
+    "vitest": "^0.31.0"
   }
 }
