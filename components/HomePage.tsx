@@ -6,8 +6,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
-import pgk from "../package.json";
-
 import { isProduction } from "./../utils/env";
 
 const weekdayStrings = [
@@ -18,18 +16,16 @@ const weekdayStrings = [
   "Freitag",
 ];
 
-const { repository } = pgk;
-
 const Home: NextPage<{
-  days: string[][][];
+  days?: string[][][];
   weekDateRange: string;
-  timestamp: string;
+  timestamp?: string;
   title: string;
   emoji: string;
   telNumber?: string;
   menuRenderer: (menu: string[]) => React.ReactElement;
 }> = ({
-  days,
+  days = [],
   weekDateRange,
   timestamp,
   title,
@@ -82,21 +78,11 @@ const Home: NextPage<{
           </div>
         ))}
 
-        <div className="flex-1 text-gray-400 pt-4 text-xs">
-          Last generated: {timestamp}
-        </div>
-      </div>
-
-      <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100">
-        Developed with ❤️ in Vienna -
-        <a
-          className="underline decoration-sky-500 semi-bold hover:text-sky-500 pl-1"
-          href={repository}
-          rel="noreferrer"
-          target="_blank"
-        >
-          GitHub
-        </a>
+        {timestamp && (
+          <div className="flex-1 text-gray-400 pt-4 text-xs">
+            Last generated: {timestamp}
+          </div>
+        )}
       </div>
     </div>
   );

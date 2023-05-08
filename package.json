@@ -4,8 +4,8 @@
   "repository": "https://github.com/davincho/marienhof-menu",
   "private": true,
   "scripts": {
-    "dev": "concurrently 'pnpm css:dev' 'next dev --turbo'",
-    "build": "pnpm css:build && next build --turbo",
+    "dev": "concurrently 'pnpm css:dev' 'next dev'",
+    "build": "pnpm css:build && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",

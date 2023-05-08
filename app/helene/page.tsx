@@ -12,8 +12,7 @@ const weekdayStrings = [
   "Freitag",
 ];
 
-const url =
-  "https://thingproxy.freeboard.io/fetch/https://www.frommehelene.at/index.php?id=15";
+const url = "https://www.frommehelene.at/index.php?id=15";
 
 const getMenu = async () => {
   console.log(`Fetching data from ${url}`);
