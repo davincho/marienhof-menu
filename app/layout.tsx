@@ -27,6 +27,7 @@ async function create() {
 
   const newTheme = theme === "dark" ? "light" : "dark";
 
+  // @ts-expect-error current TS error
   cookies().set({
     name: "theme",
     value: newTheme,
