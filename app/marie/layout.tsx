@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 
-import HomePage from "./../../components/HomePage";
+import Shell from "./../../components/Shell";
 
 export default function RootLayout({
   children,
@@ -8,11 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Suspense
-      fallback={
-        <HomePage title="Marienhof Menu" emoji="🧑🏼‍🍳" telNumber="+431408890530" />
-      }
-    >
+    <Suspense fallback={<Shell title="🧑🏼‍🍳 Marienhof Menu 🧑🏼‍🍳" />}>
       {children}
     </Suspense>
   );
