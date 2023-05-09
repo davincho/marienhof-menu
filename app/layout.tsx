@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Rubik_Distressed, Work_Sans } from "next/font/google";
-import { headers, cookies } from "next/headers";
+import { Rubik_Pixels as Rubik, Work_Sans as WorkSans } from "next/font/google";
+import { cookies } from "next/headers";
 import "./global.css";
 
 import ThemeToggle, { THEME_OPTIONS } from "../components/ThemeToggle";
@@ -8,13 +8,13 @@ import pgk from "../package.json";
 
 const { repository } = pgk;
 
-const rubik = Rubik_Distressed({
+const rubik = Rubik({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-rubik",
 });
 
-const workSans = Work_Sans({
+const workSans = WorkSans({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-workSans",
