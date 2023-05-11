@@ -24,12 +24,12 @@ const Home = ({
       <div className="md:w-3/4 mx-auto mb-8">
         <div className="mb-2 md:mb-8 relative grid grid-rows-[42px_1fr] gap-2 md:grid-rows-none md:grid-cols-[80px_1fr_80px]">
           <Link
-            className="border rounded-md p-2 border-gray-200 hover:border-gray-500 inline-block w-[100px] text-center"
+            className="rounded-md border-gray-200 hover:border-gray-500 inline-block w-[100px]"
             href={isProduction ? "https://iamhungry.vercel.app" : "/"}
           >
             👈🏻 back
           </Link>
-          <h1 className="text-3xl text-center font-heading">{title}</h1>
+          <h1 className="text-3xl text-center font-heading my-3">{title}</h1>
         </div>
 
         {children}
