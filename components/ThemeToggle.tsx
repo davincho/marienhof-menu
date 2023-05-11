@@ -29,27 +29,22 @@ export default function ThemeToggle({
     }
   }, [currentTheme]);
 
-  React.useEffect(() => {
-    if (currentTheme === undefined) {
-      const theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? THEME_OPTIONS.dark
-        : THEME_OPTIONS.light;
-
-      updateCurrentTheme(theme);
-
-      onSaveSettings({
-        theme,
-      });
-    }
-  }, [currentTheme, onSaveSettings]);
-
   return (
     <form
       action={async () => {
-        const newTheme =
-          currentTheme === THEME_OPTIONS.dark
-            ? THEME_OPTIONS.light
-            : THEME_OPTIONS.dark;
+        let newTheme;
+
+        if (currentTheme === undefined) {
+          newTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? THEME_OPTIONS.dark
+            : THEME_OPTIONS.light;
+        } else {
+          // Toggle theme
+          newTheme =
+            currentTheme === THEME_OPTIONS.dark
+              ? THEME_OPTIONS.light
+              : THEME_OPTIONS.dark;
+        }
 
         updateCurrentTheme(newTheme);
 
@@ -59,6 +54,13 @@ export default function ThemeToggle({
       }}
     >
       <button
+        ref={(node) => {
+          // For consecutive page loads make sure we store the preferred choice in a cookie
+
+          if (currentTheme === undefined) {
+            node?.click();
+          }
+        }}
         type="submit"
         className="fixed top-2 right-2 py-2 px-4 dark:border-gray-200 border-2 rounded-md"
       >
