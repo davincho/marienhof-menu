@@ -27,7 +27,7 @@ async function saveSettings({ theme }: { theme: string }) {
   cookies().set({
     name: "theme",
     value: theme,
-    // httpOnly: true,
+    httpOnly: true,
     path: "/",
   });
 
