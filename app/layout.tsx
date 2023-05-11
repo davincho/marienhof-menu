@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Rubik_Pixels as Rubik, Work_Sans as WorkSans } from "next/font/google";
+import { Rubik_Dirt as Rubik, Work_Sans as WorkSans } from "next/font/google";
 import { cookies } from "next/headers";
 import "./global.css";
 
@@ -20,23 +20,19 @@ const workSans = WorkSans({
   variable: "--font-workSans",
 });
 
-async function create() {
+async function saveSettings({ theme }: { theme: string }) {
   "use server";
-
-  const theme = cookies().get("theme")?.value;
-
-  const newTheme = theme === "dark" ? "light" : "dark";
 
   // @ts-expect-error current TS error
   cookies().set({
     name: "theme",
-    value: newTheme,
-    httpOnly: true,
+    value: theme,
+    // httpOnly: true,
     path: "/",
   });
 
   return {
-    theme: newTheme,
+    theme,
   };
 }
 
@@ -66,7 +62,7 @@ export default async function RootLayout({
       <body
         className={`${rubik.variable} ${workSans.variable} font-body dark:bg-slate-800 dark:text-gray-50`}
       >
-        <ThemeToggle onSaveSettings={create} theme={theme} />
+        <ThemeToggle onSaveSettings={saveSettings} theme={theme} />
 
         {children}
         <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100 dark:bg-slate-900">
