@@ -31,12 +31,12 @@ const Home: NextPage<{
 }) => {
   return (
     <Shell title={`${emoji} ${title} ${emoji}`}>
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <h2>Menü für {weekDateRange}</h2>
         {telNumber ? (
           <a
             href={`tel:${telNumber}`}
-            className="semi-bold p-2 border border-sky-100 rounded-md hover:border-sky-300 active:border-sky-500"
+            className="semi-bold rounded-md border border-sky-100 p-2 hover:border-sky-300 active:border-sky-500"
           >
             ☎️ Call
           </a>
@@ -44,7 +44,7 @@ const Home: NextPage<{
       </div>
       {days.map((day, dayIndex) => (
         <div key={dayIndex}>
-          <h2 className="text-2xl pt-2 font-heading">
+          <h2 className="pt-2 font-heading text-2xl">
             {weekdayStrings[dayIndex]}
           </h2>
           {day.map((menu, menuIndex) => (
@@ -56,7 +56,7 @@ const Home: NextPage<{
       ))}
 
       {timestamp && (
-        <div className="flex-1 text-gray-400 pt-4 text-xs">
+        <div className="flex-1 pt-4 text-xs text-gray-400">
           Last generated: {timestamp}
         </div>
       )}
