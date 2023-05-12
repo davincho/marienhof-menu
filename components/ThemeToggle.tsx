@@ -11,7 +11,7 @@ export default function ThemeToggle({
   theme,
   onSaveSettings,
 }: {
-  theme: keyof typeof THEME_OPTIONS;
+  theme?: keyof typeof THEME_OPTIONS;
   onSaveSettings: any;
 }) {
   // For now we have to use useState instead of useOptimistic

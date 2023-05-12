@@ -1,5 +1,3 @@
-"use client";
-
 const TYPE_MAPPING = {
   INTERNATIONAL: "text-amber-900 bg-amber-300",
   SUPPE: "text-emerald-900 bg-emerald-300",
