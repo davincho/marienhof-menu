@@ -20,16 +20,15 @@ const Home = ({
         <title>{title}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-
-      <div className="md:w-3/4 mx-auto mb-8">
-        <div className="mb-2 md:mb-8 relative grid grid-rows-[42px_1fr] gap-2 md:grid-rows-none md:grid-cols-[80px_1fr_80px] my-3">
+      <div className="mx-auto mb-8 md:w-3/4">
+        <div className="relative my-3 mb-2 grid grid-rows-[42px_1fr] gap-2 md:mb-8 md:grid-cols-[80px_1fr_80px] md:grid-rows-none">
           <Link
-            className="rounded-md border-gray-200  w-[100px] flex items-center hover:text-sky-300 active:text-sky-500"
+            className="flex w-[100px]  items-center rounded-md border-gray-200 hover:text-sky-300 active:text-sky-500"
             href={isProduction ? "https://iamhungry.vercel.app" : "/"}
           >
             👈🏻 back
           </Link>
-          <h1 className="text-3xl text-center font-heading">{title}</h1>
+          <h1 className="text-center font-heading text-3xl">{title}</h1>
         </div>
 
         {children}

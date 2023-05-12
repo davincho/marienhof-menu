@@ -65,10 +65,10 @@ export default async function RootLayout({
       >
         <ThemeToggle onSaveSettings={saveSettings} theme={theme} />
         {children}
-        <div className="fixed bottom-0 left-0 right-0 text-center p-2 bg-gray-100 dark:bg-slate-900">
+        <div className="fixed bottom-0 left-0 right-0 bg-gray-100 p-2 text-center dark:bg-slate-900">
           Developed with ❤️ in Vienna -
           <a
-            className="underline decoration-sky-500 semi-bold hover:text-sky-500 pl-1"
+            className="semi-bold pl-1 underline decoration-sky-500 hover:text-sky-500"
             href={repository}
             rel="noreferrer"
             target="_blank"

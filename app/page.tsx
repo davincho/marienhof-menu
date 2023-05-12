@@ -5,10 +5,10 @@ const commonLinkStyle =
 
 export default async function Page() {
   return (
-    <div className="container mx-auto p-4 h-screen">
-      <div className="flex justify-center items-center h-full">
-        <div className="flex flex-col w-full md:w-1/2">
-          <h1 className="text-5xl mb-10 text-center font-heading">
+    <div className="container mx-auto h-screen p-4">
+      <div className="flex h-full items-center justify-center">
+        <div className="flex w-full flex-col md:w-1/2">
+          <h1 className="mb-10 text-center font-heading text-5xl">
             I am hungry!!1
           </h1>
           <Link href="/marie" className={`${commonLinkStyle} mb-3`}>
