@@ -62,7 +62,7 @@ export default function ThemeToggle({
           }
         }}
         type="submit"
-        className="absolute top-2 right-2 py-2 px-4 dark:border-gray-200 border-2 rounded-md dark:hover:border-sky-300 dark:active:border-sky-500 dark:border-gray-200 border-2 rounded-md hover:border-sky-300 active:border-sky-500"
+        className="absolute right-2 top-2 rounded-md border-2 px-4 py-2 hover:border-sky-300 active:border-sky-500 dark:border-gray-200 dark:hover:border-sky-300 dark:active:border-sky-500"
       >
         {currentTheme === "dark" ? "☀️" : "🌛"}
       </button>
