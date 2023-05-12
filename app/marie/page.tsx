@@ -5,8 +5,6 @@ import parser from "./../../utils/marify.parse";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   const dataBuffer = await fetch(
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
     { next: { revalidate: 3600 } }
