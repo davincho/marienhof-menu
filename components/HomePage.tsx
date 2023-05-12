@@ -36,7 +36,7 @@ const Home: NextPage<{
         {telNumber ? (
           <a
             href={`tel:${telNumber}`}
-            className="semi-bold p-2 border border-sky-100 rounded-md hover:border-sky-300 active:bg-slate-200"
+            className="semi-bold p-2 border border-sky-100 rounded-md hover:border-sky-300 active:border-sky-500"
           >
             ☎️ Call
           </a>
