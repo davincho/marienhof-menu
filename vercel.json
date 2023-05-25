@@ -1,12 +1,8 @@
 {
-    "crons": [
-      {
-        "path": "/marie",
-        "schedule": "0 5 * * *"
-      },
-      {
-        "path": "/paul",
-        "schedule": "0 5 * * *"
-      }
-    ]
-  }
+  "crons": [
+    {
+      "path": "/api/revalidate",
+      "schedule": "0 5 * * *"
+    }
+  ]
+}

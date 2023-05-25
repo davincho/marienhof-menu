@@ -21,9 +21,7 @@ const getMenu = async () => {
     // Calling https://www.frommehelene.at/index.php?id=15 directly causes some SSL issues
     // as the certificate trust chain of this website is broken
     url,
-    {
-      next: { revalidate: 3600 },
-    }
+    { next: { tags: ["data"] } }
   );
 
   if (!result.ok) {
