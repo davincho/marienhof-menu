@@ -24,7 +24,6 @@ const workSans = WorkSans({
 async function saveSettings({ theme }: { theme: string }) {
   "use server";
 
-  // @ts-expect-error current TS error
   cookies().set({
     name: "theme",
     value: theme,
