@@ -5,10 +5,14 @@ import parser from "./../../utils/marify.parse";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
+  console.info("Starting to fetch Marienhof");
+
   const dataBuffer = await fetch(
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
     { next: { tags: ["data"] } }
   );
+
+  console.info("Fetching done");
 
   const blobContent = await dataBuffer.arrayBuffer();
 
