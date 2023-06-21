@@ -43,11 +43,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = cookies();
-
-  const theme =
-    (cookieStore.get("theme")?.value as keyof typeof THEME_OPTIONS) ||
-    undefined;
+  // const cookieStore = cookies();
+  const theme = "dark";
+  // const theme =
+  //   (cookieStore.get("theme")?.value as keyof typeof THEME_OPTIONS) ||
+  //   undefined;
 
   return (
     <html lang="en" className={theme === "dark" ? "dark" : ""}>
