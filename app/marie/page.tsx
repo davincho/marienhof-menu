@@ -9,7 +9,7 @@ const getMenu = async () => {
 
   const dataBuffer = await fetch(
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
-    { next: { tags: ["data"], revalidate: 86400 } }
+    { next: { tags: ["data"] } }
   );
 
   console.info("Fetching done", new Date().toLocaleString());
