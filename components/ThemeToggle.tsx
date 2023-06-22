@@ -22,6 +22,18 @@ export default function ThemeToggle({
     setIsMounted(true);
   }, []);
 
+  React.useEffect(() => {
+    var htmlElement = document.querySelector("html");
+
+    if (htmlElement) {
+      if (isDarkMode) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+    }
+  }, [isDarkMode]);
+
   if (!isMoutned) {
     return;
   }
@@ -32,16 +44,6 @@ export default function ThemeToggle({
         event.preventDefault();
 
         toggle();
-
-        var htmlElement = document.querySelector("html");
-
-        if (htmlElement) {
-          if (isDarkMode) {
-            htmlElement.classList.remove("dark");
-          } else {
-            htmlElement.classList.add("dark");
-          }
-        }
 
         onSaveSettings({
           theme: "",
