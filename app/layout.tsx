@@ -55,10 +55,20 @@ export default async function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if(window.localStorage.getItem('usehooks-ts-dark-mode') === 'true') {
-                var htmlElement = document.querySelector('html');
-                htmlElement.classList.add('dark');
+            (function(){
+              var hookValue = window.localStorage.getItem('usehooks-ts-dark-mode');
+
+              if(hookValue === 'false') {
+                return;
               }
+
+              if(!hookValue && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                return;
+              }
+
+              var htmlElement = document.querySelector('html');
+              htmlElement.classList.add('dark');
+            })()
             `,
           }}
         />
