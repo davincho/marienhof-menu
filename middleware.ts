@@ -9,6 +9,8 @@ const VALID_DOMAINS = new Map<string, string>([
 ]);
 
 export function middleware(request: NextRequest) {
+  console.log("MMIMIM");
+
   if (!isProduction) {
     return;
   }
@@ -31,7 +33,7 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher:  [
+  matcher: [
     /*
      * Match all request paths except for the ones starting with:
      * - api (API routes)
@@ -39,6 +41,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - assets (static assets)
      */
-    '/((?!api|_next/static|favicon.ico|assets).*)'
+    "/",
   ],
 };
