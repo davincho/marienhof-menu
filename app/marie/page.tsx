@@ -23,7 +23,7 @@ const getMenu = async () => {
   return {
     days,
     weekDateRange,
-    timestamp: new Date().toLocaleString("de", { timeZone: "Europe/Vienna" }),
+    timestamp: dataBuffer.headers.get("date")!,
   };
 };
 
