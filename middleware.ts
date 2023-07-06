@@ -31,5 +31,14 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/:path*",
+  matcher:  [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - favicon.ico (favicon file)
+     * - assets (static assets)
+     */
+    '/((?!api|_next/static|favicon.ico|assets).*)'
+  ],
 };
