@@ -6,11 +6,10 @@ import { isProduction } from "./utils/env";
 const VALID_DOMAINS = new Map<string, string>([
   ["paulify.vercel.app", "/paul"],
   ["marienify.vercel.app", "/marie"],
+  ["limonis.vercel.app", "/limonis"],
 ]);
 
 export function middleware(request: NextRequest) {
-  console.log("MMIMIM");
-
   if (!isProduction) {
     return;
   }
