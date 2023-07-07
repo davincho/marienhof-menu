@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import { parse } from "node-html-parser";
 
 import HomePage from "../../components/HomePage";
 import { marienRenderer } from "../../utils/render";
@@ -8,44 +7,48 @@ import parser from "./../../utils/limonis.parse";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
-  const result = await fetch("https://limonis.at/was-gibts/");
-
-  if (!result.ok) {
-    console.error(result);
-    throw new Error(`Could not fetch from Limonis`);
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
+    throw new Error("Could not access Redis");
   }
 
-  const html = await result.text();
+  // const limonisUrl = await kv.hget<string>("limonis", "url");
 
-  const root = parse(html);
+  const kvData = await fetch(
+    `${process.env.KV_REST_API_URL}/hget/limonis/url`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+      },
+      next: { tags: ["data-limonis"] },
+    }
+  );
 
-  const link = root
-    .querySelector('[aria-label="WOCHENKARTE"]')
-    ?.getAttribute("href");
+  const { result: limonisUrl } = await kvData.json();
 
-  if (!link) {
-    throw new Error(`Could not find link to Wochenkarte PDF`);
+  if (!limonisUrl) {
+    throw new Error("No Limonis URL found");
   }
 
-  const dataBuffer = await fetch(link, { next: { tags: ["data"] } });
+  const dataBuffer = await fetch(limonisUrl, { next: { tags: ["data"] } });
 
   const blobContent = await dataBuffer.arrayBuffer();
 
   const data = (await pdf(Buffer.from(blobContent))) as { text: string };
-
-  console.log("data", data.text);
 
   const { days, weekDateRange } = parser(data.text);
 
   return {
     days,
     weekDateRange,
+    limonisUrl,
     timestamp: new Date().toLocaleString("de", { timeZone: "Europe/Vienna" }),
   };
 };
 
 export default async function Page() {
-  const { days, timestamp, weekDateRange } = await getMenu();
+  const { days, timestamp, weekDateRange, limonisUrl } = await getMenu();
+
+  console.log("limonisUrl", limonisUrl);
 
   return (
     <HomePage

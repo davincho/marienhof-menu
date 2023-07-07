@@ -8,12 +8,13 @@
     "build": "pnpm css:build && next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest",
+    "test": "vitest */**/*.test.ts",
     "css:dev": "pnpm css:build --watch",
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.1",
+    "@vercel/kv": "^0.2.2",
     "next": "13.4.8",
     "node-html-parser": "^6.1.5",
     "pdf-parse": "^1.1.1",

@@ -28,8 +28,6 @@ const parser = (
   for (const line of lines) {
     const weekdaySearch = weekdayStrings[weekdayCount];
 
-    console.log("SEARCHING FOR", weekdaySearch, line);
-
     if (line.startsWith("BIO TAGESGERICHTE KW")) {
       // Date info
       weekDateRange = line;
@@ -44,7 +42,7 @@ const parser = (
       collector = [];
       startCollecting = true;
       weekdayCount++;
-    } else if (line.includes("BIO SAISONALE SUPPEN & EINTÖPFE")) {
+    } else if (line.includes("Fleisch oder Fisch aus Österreich")) {
       weekdaysMenu.push(collector);
       startCollecting = false;
     } else if (startCollecting) {
@@ -53,34 +51,20 @@ const parser = (
   }
 
   // fix some line breaks
-
   const fixedDays = weekdaysMenu.map((weekday) => {
-    let fixedMenutItems = [];
-
-    if (weekday.length > 3) {
-      let concatMenu = [];
-
-      for (const menu of weekday) {
-        if (menu.includes("€")) {
-          if (concatMenu.length === 0) {
-            fixedMenutItems.push(menu);
-          } else {
-            concatMenu.push(menu);
-            fixedMenutItems.push(concatMenu.join(", "));
-            concatMenu = [];
-          }
-        } else {
-          concatMenu.push(menu);
-        }
+    const fixedDay = [];
+    let itemsParts = [];
+    for (const weekdayParts of weekday) {
+      if (weekdayParts.indexOf("/ ") > -1) {
+        itemsParts.push(weekdayParts);
+        fixedDay.push([itemsParts.join(" ")]);
+        itemsParts = [];
+      } else {
+        itemsParts.push(weekdayParts);
       }
-    } else {
-      fixedMenutItems = weekday;
     }
 
-    // Now split price apart
-    return fixedMenutItems.map((item) =>
-      item.split("€").map((item) => cleaner(item.trim()))
-    );
+    return fixedDay;
   });
 
   return {
