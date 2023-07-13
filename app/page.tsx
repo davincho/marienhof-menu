@@ -17,9 +17,6 @@ export default async function Page() {
           <Link href="/paul" className={`${commonLinkStyle} mb-3`}>
             🐵 Paul and the Monkeys
           </Link>
-          <Link href="/helene" className={`${commonLinkStyle} mb-3`}>
-            🥩 Fromme Helene
-          </Link>
           <Link href="/limonis" className={`${commonLinkStyle}`}>
             🍋 Limonis
           </Link>
