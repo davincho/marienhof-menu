@@ -13,6 +13,7 @@
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css"
   },
   "dependencies": {
+    "@octokit/core": "^5.0.0",
     "@vercel/analytics": "^1.0.1",
     "@vercel/kv": "^0.2.2",
     "next": "13.4.8",

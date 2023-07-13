@@ -21,7 +21,7 @@ export default async function Page() {
             🥩 Fromme Helene
           </Link>
           <Link href="/limonis" className={`${commonLinkStyle}`}>
-            🍋 (WIP) Limonis
+            🍋 Limonis
           </Link>
         </div>
       </div>

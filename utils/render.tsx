@@ -10,7 +10,7 @@ export const paulRenderer = ([type, name, price]: string[]) => (
   <>
     <div>
       <span
-        className={`inline-block text-xs rounded-md p-1 mr-1 ${
+        className={`mr-1 inline-block rounded-md p-1 text-xs ${
           TYPE_MAPPING[type as keyof typeof TYPE_MAPPING]
         }`}
       >
@@ -23,6 +23,13 @@ export const paulRenderer = ([type, name, price]: string[]) => (
 );
 
 export const marienRenderer = ([name, price]: string[]) => (
+  <>
+    <div>{name}</div>
+    <div className="ml-2 flex-none text-right">€ {price}</div>
+  </>
+);
+
+export const limonisRenderer = ([name, price]: string[]) => (
   <>
     <div>{name}</div>
     <div className="ml-2 flex-none text-right">€ {price}</div>

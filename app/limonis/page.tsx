@@ -1,33 +1,39 @@
 /* eslint-disable no-console */
 
+import { Octokit } from "@octokit/core";
+
 import HomePage from "../../components/HomePage";
-import { marienRenderer } from "../../utils/render";
+import { limonisRenderer } from "../../utils/render";
 
 import parser from "./../../utils/limonis.parse";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
-  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
-    throw new Error("Could not access Redis");
-  }
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_ACCESS_KEY,
+  });
 
-  // const limonisUrl = await kv.hget<string>("limonis", "url");
-
-  const kvData = await fetch(
-    `${process.env.KV_REST_API_URL}/hget/limonis/url`,
+  const test = await octokit.request(
+    "GET /repos/davincho/marienhof-menu/issues/1",
     {
+      owner: "davincho",
+      repo: "marienhof-menu",
+      issue_number: 1,
       headers: {
-        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+        "X-GitHub-Api-Version": "2022-11-28",
       },
-      next: { tags: ["data-limonis"] },
     }
   );
 
-  const { result: limonisUrl } = await kvData.json();
+  const regex = /\((.*?)\)/;
+  const match = test.data.body.match(regex);
+  const limonisUrl = match ? match[1] : null;
 
   if (!limonisUrl) {
-    throw new Error("No Limonis URL found");
+    throw new Error("No Limonis PDF found");
   }
+
+  console.log(`Fetching ${limonisUrl}`);
 
   const dataBuffer = await fetch(limonisUrl, { next: { tags: ["data"] } });
 
@@ -57,7 +63,7 @@ export default async function Page() {
       days={days}
       weekDateRange={weekDateRange}
       timestamp={timestamp}
-      menuRenderer={marienRenderer}
+      menuRenderer={limonisRenderer}
     />
   );
 }

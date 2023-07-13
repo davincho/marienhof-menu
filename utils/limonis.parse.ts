@@ -1,5 +1,3 @@
-import cleaner from "./cleaner";
-
 const weekdayStrings = [
   "Montag",
   "Dienstag",
@@ -50,21 +48,24 @@ const parser = (
     }
   }
 
-  // fix some line breaks
+  // fix some line breaks and remove tages dessert
   const fixedDays = weekdaysMenu.map((weekday) => {
     const fixedDay = [];
     let itemsParts = [];
     for (const weekdayParts of weekday) {
       if (weekdayParts.indexOf("/ ") > -1) {
         itemsParts.push(weekdayParts);
-        fixedDay.push([itemsParts.join(" ")]);
+        fixedDay.push([
+          itemsParts.join(" "),
+          fixedDay.length === 0 ? "7.2" : "6.6",
+        ]);
         itemsParts = [];
       } else {
         itemsParts.push(weekdayParts);
       }
     }
 
-    return fixedDay;
+    return fixedDay.slice(0, 2);
   });
 
   return {
