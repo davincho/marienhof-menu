@@ -32,6 +32,9 @@ export const marienRenderer = ([name, price]: string[]) => (
 export const limonisRenderer = ([name, price]: string[]) => (
   <>
     <div>{name}</div>
-    <div className="ml-2 flex-none text-right">€ {price}</div>
+    <div className="ml-2 flex-none text-right">
+      <span className="mr-2 line-through decoration-orange-500">€{price}</span>€{" "}
+      {price === "7,20" ? "1,20" : "0,60"}
+    </div>
   </>
 );

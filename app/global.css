@@ -626,6 +626,10 @@ video {
   margin-right: 0.25rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -884,8 +888,16 @@ video {
   text-decoration-line: underline;
 }
 
+.line-through {
+  text-decoration-line: line-through;
+}
+
 .decoration-sky-500 {
   text-decoration-color: #0ea5e9;
+}
+
+.decoration-orange-500 {
+  text-decoration-color: #f97316;
 }
 
 .filter {

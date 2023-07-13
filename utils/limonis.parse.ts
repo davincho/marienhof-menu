@@ -57,7 +57,7 @@ const parser = (
         itemsParts.push(weekdayParts);
         fixedDay.push([
           itemsParts.join(" "),
-          fixedDay.length === 0 ? "7.2" : "6.6",
+          fixedDay.length === 0 ? "7,20" : "6,60",
         ]);
         itemsParts = [];
       } else {
