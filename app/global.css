@@ -908,6 +908,10 @@ video {
   text-decoration-color: #0ea5e9;
 }
 
+.decoration-wavy {
+  text-decoration-style: wavy;
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
