@@ -13,12 +13,10 @@ const VALID_DOMAINS = new Map<string, string>([
 
 export default async function Page() {
   const headersList = headers();
-  const referer = headersList.get("referer");
+  const host = headersList.get("x-forwarded-host");
 
-  if (referer) {
-    const { hostname } = new URL(referer);
-
-    const redirectUrl = VALID_DOMAINS.get(hostname);
+  if (host) {
+    const redirectUrl = VALID_DOMAINS.get(host);
 
     if (redirectUrl) {
       redirect(redirectUrl);
