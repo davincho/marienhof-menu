@@ -4,6 +4,8 @@ import type { NextPage } from "next";
 
 import Shell from "./Shell";
 
+import DayEntry from "./DayEntry";
+
 const weekdayStrings = [
   "Montag",
   "Dienstag",
@@ -29,8 +31,6 @@ const Home: NextPage<{
   telNumber,
   menuRenderer,
 }) => {
-  const currentWeekDay = new Date().getUTCDay();
-
   return (
     <Shell title={`${emoji} ${title} ${emoji}`}>
       <div className="mb-2 flex items-center justify-between">
@@ -45,21 +45,14 @@ const Home: NextPage<{
         ) : undefined}
       </div>
       {days.map((day, dayIndex) => (
-        <div
-          key={dayIndex}
-          className={`rounded-md border-2 p-3 odd:bg-slate-100 dark:odd:bg-slate-500 ${
-            currentWeekDay === dayIndex + 1
-              ? "border-orange-500"
-              : "border-white dark:border-slate-800"
-          }`}
-        >
+        <DayEntry key={dayIndex} index={dayIndex + 1}>
           <h2 className="font-heading text-2xl">{weekdayStrings[dayIndex]}</h2>
           {day.map((menu, menuIndex) => (
             <div key={menuIndex} className="flex justify-between">
               {menuRenderer(menu)}
             </div>
           ))}
-        </div>
+        </DayEntry>
       ))}
 
       {timestamp && (
