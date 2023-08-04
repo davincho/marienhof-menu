@@ -19,7 +19,7 @@ export default async function Page() {
     const redirectUrl = VALID_DOMAINS.get(host);
 
     if (redirectUrl) {
-      redirect(redirectUrl);
+      redirect(`https://iamhungry.vercel.app/${redirectUrl}`);
     }
   }
 
