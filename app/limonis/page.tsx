@@ -21,6 +21,7 @@ const getMenu = async () => {
       issue_number: 1,
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
+        cache: "no-store",
       },
     }
   );
