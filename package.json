@@ -15,10 +15,10 @@
     "db:deploy": "dotenv -e .env.development.local -- npx prisma migrate deploy"
   },
   "dependencies": {
-    "@octokit/core": "^5.0.1",
     "@prisma/client": "^5.4.2",
     "@vercel/analytics": "^1.1.1",
     "@vercel/blob": "^0.13.0",
+    "dayjs": "1.11.10",
     "kysely": "^0.26.3",
     "next": "13.5.4",
     "node-html-parser": "^6.1.10",
@@ -42,7 +42,7 @@
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
     "prisma": "^5.4.2",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.5",
     "typescript": "5.2.2",
     "vitest": "^0.34.6"
   }

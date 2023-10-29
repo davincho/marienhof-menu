@@ -6,8 +6,19 @@ const weekdayStrings = [
   "Freitag",
 ];
 
+export const parseCalenderWeek = (dateStr: string): number | undefined => {
+  // Example: BIO TAGESGERICHTE KW 28 / 10.07. BIS 14.07.
+  const result = dateStr.match(/.+kw (\d+)/i);
+
+  if (!result || result.length < 2) {
+    return;
+  }
+
+  return Number.parseInt(result?.[1], 10);
+};
+
 const parser = (
-  data: string
+  data: string,
 ): { days: string[][][]; weekDateRange: string } => {
   let weekdayCount = 0;
 
@@ -18,7 +29,7 @@ const parser = (
 
   const lines = data
     .split("\n")
-    .map((str) => str.trim().replace(/  +/g, " "))
+    .map((str) => str.trim().replaceAll(/  +/g, " "))
     .filter(Boolean);
 
   let weekDateRange = "";
@@ -53,11 +64,11 @@ const parser = (
     const fixedDay = [];
     let itemsParts = [];
     for (const weekdayParts of weekday) {
-      if (weekdayParts.indexOf("/ ") > -1) {
+      if (weekdayParts.includes("/ ")) {
         itemsParts.push(weekdayParts);
         fixedDay.push([
           itemsParts.join(" "),
-          fixedDay.length === 0 ? "7,20" : "6,60",
+          fixedDay.length === 0 ? "6,60" : "7,20",
         ]);
         itemsParts = [];
       } else {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import parse from "./../limonis.parse";
+import parse, { parseCalenderWeek } from "./../limonis.parse";
 import input from "./limonis-input.txt?raw";
 import output from "./limonis-output";
 
@@ -9,7 +9,15 @@ describe("Limonis Menu Parsing - http://www.paulandthemonkeys.at/wochenkarte/woc
     expect(parse(input).days).toEqual(output);
 
     expect(parse(input).weekDateRange).toEqual(
-      "BIO TAGESGERICHTE KW 28 / 10.07. BIS 14.07."
+      "BIO TAGESGERICHTE KW 28 / 10.07. BIS 14.07.",
     );
+  });
+});
+
+describe("calendar week convertion", () => {
+  it("should parse correct week", () => {
+    expect(
+      parseCalenderWeek("BIO TAGESGERICHTE KW 28 / 10.07. BIS 14.07."),
+    ).toEqual(28);
   });
 });

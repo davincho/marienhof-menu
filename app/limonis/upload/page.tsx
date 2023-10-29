@@ -1,11 +1,12 @@
 "use client";
 
-import type { PutBlobResult } from "@vercel/blob";
 import { useState, useRef } from "react";
+
+import type { PutBlobResult } from "@vercel/blob";
 
 export default function Page() {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>();
   return (
     <>
       <h1>Upload Your Avatar</h1>
