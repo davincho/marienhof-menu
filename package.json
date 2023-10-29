@@ -12,7 +12,8 @@
     "css:dev": "pnpm css:build --watch",
     "css:build": "tailwindcss -i ./styles/global.css -o ./app/global.css",
     "db:migrate": "dotenv -e .env.development.local -- npx prisma migrate dev",
-    "db:deploy": "dotenv -e .env.development.local -- npx prisma migrate deploy"
+    "db:deploy": "dotenv -e .env.development.local -- npx prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.4.2",

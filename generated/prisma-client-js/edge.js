@@ -144,7 +144,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "ciName": "Vercel",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -154,7 +154,8 @@ const config = {
     }
   },
   "inlineSchema": "ZGF0YXNvdXJjZSBkYiB7CiAgcHJvdmlkZXIgID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgID0gZW52KCJQT1NUR1JFU19QUklTTUFfVVJMIikgLy8gdXNlcyBjb25uZWN0aW9uIHBvb2xpbmcKICBkaXJlY3RVcmwgPSBlbnYoIlBPU1RHUkVTX1VSTF9OT05fUE9PTElORyIpIC8vIHVzZXMgYSBkaXJlY3QgY29ubmVjdGlvbgp9Cgptb2RlbCBmaWxlcyB7CiAgaWQgICAgICAgIEludCAgICAgIEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgY3JlYXRlZEF0IERhdGVUaW1lIEBkZWZhdWx0KG5vdygpKQogIHZhbGlkRnJvbSBEYXRlVGltZQogIHVybCAgICAgICBTdHJpbmcKfQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9wcmlzbWEtY2xpZW50LWpzIgp9Cg==",
-  "inlineSchemaHash": "6cb91e5f64c6b051ee057f5c74adc20cfdf9713924e01f87e50b488f2ef7a86b"
+  "inlineSchemaHash": "6cb91e5f64c6b051ee057f5c74adc20cfdf9713924e01f87e50b488f2ef7a86b",
+  "noEngine": false
 }
 config.dirname = '/'
 
