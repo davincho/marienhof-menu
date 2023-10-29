@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const commonLinkStyle =
   "border-gray-200 hover:border-gray-400 border-2 text-4xl rounded-md p-2 w-full text-center";

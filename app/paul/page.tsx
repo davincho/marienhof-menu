@@ -7,7 +7,7 @@ import pdf from "./../pdfShim";
 const getMenu = async () => {
   const dataBuffer = await fetch(
     "http://www.paulandthemonkeys.at/wochenkarte/wochenkarte_download/",
-    { next: { tags: ["data"] } }
+    { next: { tags: ["data"] } },
   );
 
   const blobContent = await dataBuffer.arrayBuffer();

@@ -1,42 +1,20 @@
 /* eslint-disable no-console */
 import { put } from "@vercel/blob";
-import { NextResponse } from "next/server";
 
-import dayjs from "../../../utils/dayjs";
-
-import { PrismaClient } from "./../../../generated/prisma-client-js";
+import { PrismaClient } from "../../../../generated/prisma-client-js";
+import dayjs from "../../../../utils/dayjs";
 import limonisParser, {
   parseCalenderWeek,
-} from "./../../../utils/limonis.parse";
-import pdf from "./../../pdfShim";
+} from "../../../../utils/limonis.parse";
+import pdf from "../../../pdfShim";
 
 const prisma = new PrismaClient();
 
-export async function GET() {
-  // await prisma.files.delete();
-
-  // const result = await prisma.files.create({
-  //   data: {
-  //     validFrom: new Date(),
-  //     url: "https://github.com/davincho/marienhof-menu/files/12395763/KW34_Wochenkarte_Bio.Kantine_indd.pdf",
-  //   },
-  //   select: {
-  //     id: true,
-  //     url: true,
-  //   },
-  // });
-
-  return NextResponse.json({
-    week: dayjs().week(),
-    date: dayjs().week(44).startOf("week").format("YYYY-MM-DD"),
-  });
-}
-
-export async function POST(request: Request): Promise<NextResponse> {
+export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
   const filename = searchParams.get("filename");
 
-  if (!filename) {
+  if (!filename || !request.body) {
     return Response.error();
   }
 
@@ -56,7 +34,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   const data = (await pdf(Buffer.from(blobContent))) as { text: string };
 
-  const { days, weekDateRange } = limonisParser(data.text);
+  const { weekDateRange } = limonisParser(data.text);
 
   const weekNumber = parseCalenderWeek(weekDateRange);
 
@@ -71,10 +49,5 @@ export async function POST(request: Request): Promise<NextResponse> {
       validFrom: dayjs().week(weekNumber).startOf("week").toISOString(),
       url: blobUrl,
     },
-  });
-
-  return NextResponse.json({
-    days,
-    weekDateRange,
   });
 }

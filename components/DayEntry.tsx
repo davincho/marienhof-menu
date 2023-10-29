@@ -13,8 +13,6 @@ const Home = ({
 
   const isHighlighted = currentWeekDay === index;
 
-  const ref = React.useRef(null);
-
   return (
     <div
       ref={(node) => {

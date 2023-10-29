@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import HomePage from "../../components/HomePage";
 import { marienRenderer } from "../../utils/render";
 
@@ -9,7 +10,7 @@ const getMenu = async () => {
 
   const dataBuffer = await fetch(
     "http://www.restaurant-marienhof.at/restaurant/pdf/wochenmenue.pdf",
-    { next: { tags: ["data"] } }
+    { next: { tags: ["data"] } },
   );
 
   console.info("Fetching done", new Date().toLocaleString());

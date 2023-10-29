@@ -26,7 +26,6 @@ async function saveSettings({ theme }: { theme: string }) {
 
   cookies().delete({
     name: "theme",
-    value: theme,
     httpOnly: false,
     path: "/",
   });

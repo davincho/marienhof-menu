@@ -2,9 +2,8 @@ import React from "react";
 
 import type { NextPage } from "next";
 
-import Shell from "./Shell";
-
 import DayEntry from "./DayEntry";
+import Shell from "./Shell";
 
 const weekdayStrings = [
   "Montag",

@@ -21,10 +21,13 @@ export default function Page() {
 
           const file = inputFileRef.current.files[0];
 
-          const response = await fetch(`/api/upload?filename=${file.name}`, {
-            method: "POST",
-            body: file,
-          });
+          const response = await fetch(
+            `/limonis/upload/api?filename=${file.name}`,
+            {
+              method: "POST",
+              body: file,
+            },
+          );
 
           const newBlob = (await response.json()) as PutBlobResult;
 

@@ -12,7 +12,7 @@ export default function ThemeToggle({
   onSaveSettings,
 }: {
   theme?: keyof typeof THEME_OPTIONS;
-  onSaveSettings: any;
+  onSaveSettings: (payload: { theme: string }) => void;
 }) {
   const { isDarkMode, toggle } = useDarkMode();
 
@@ -23,7 +23,7 @@ export default function ThemeToggle({
   }, []);
 
   React.useEffect(() => {
-    var htmlElement = document.querySelector("html");
+    const htmlElement = document.querySelector("html");
 
     if (htmlElement) {
       if (isDarkMode) {
