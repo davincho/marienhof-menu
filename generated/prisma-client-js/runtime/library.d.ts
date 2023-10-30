@@ -1078,16 +1078,28 @@ declare interface EnvValue {
 export declare type Equals<A, B> = (<T>() => T extends A ? 1 : 2) extends (<T>() => T extends B ? 1 : 2) ? 1 : 0;
 
 declare type Error_2 = {
-    kind: 'GenericJsError';
+    kind: 'GenericJs';
     id: number;
 } | {
-    kind: 'PostgresError';
+    kind: 'Postgres';
     code: string;
     severity: string;
     message: string;
     detail: string | undefined;
     column: string | undefined;
     hint: string | undefined;
+} | {
+    kind: 'Mysql';
+    code: number;
+    message: string;
+    state: string;
+} | {
+    kind: 'Sqlite';
+    /**
+     * Sqlite extended error code: https://www.sqlite.org/rescode.html
+     */
+    extendedCode: number;
+    message: string;
 };
 
 declare interface ErrorCapturingDriverAdapter extends DriverAdapter {
