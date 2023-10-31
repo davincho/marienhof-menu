@@ -50,4 +50,6 @@ export async function POST(request: Request) {
       url: blobUrl,
     },
   });
+
+  return Response.json({});
 }
