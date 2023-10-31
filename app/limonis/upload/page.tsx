@@ -2,11 +2,9 @@
 
 import { useState, useRef } from "react";
 
-import type { PutBlobResult } from "@vercel/blob";
-
 export default function Page() {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>();
+  const [uploaded, setUploaded] = useState<boolean>(false);
   return (
     <>
       <h1>Upload Your Avatar</h1>
@@ -21,27 +19,18 @@ export default function Page() {
 
           const file = inputFileRef.current.files[0];
 
-          const response = await fetch(
-            `/limonis/upload/api?filename=${file.name}`,
-            {
-              method: "POST",
-              body: file,
-            },
-          );
+          await fetch(`/limonis/upload/api?filename=${file.name}`, {
+            method: "POST",
+            body: file,
+          });
 
-          const newBlob = (await response.json()) as PutBlobResult;
-
-          setBlob(newBlob);
+          setUploaded(true);
         }}
       >
         <input name="file" ref={inputFileRef} type="file" />
         <button type="submit">Upload</button>
       </form>
-      {blob && (
-        <div>
-          Blob url: <a href={blob.url}>{blob.url}</a>
-        </div>
-      )}
+      {uploaded && <div>Uploaded</div>}
     </>
   );
 }
