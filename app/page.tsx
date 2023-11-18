@@ -25,16 +25,18 @@ export default async function Page() {
   return (
     <div className="container mx-auto h-screen p-4">
       <div className="flex h-full items-center justify-center">
-        <div className="flex w-full flex-col md:w-1/2">
+        <div className="flex w-full flex-col md:w-2/3 xl:w-1/2">
           <h1 className="mb-10 text-center font-heading text-5xl">
             I am hungry!!1
           </h1>
-          <Link href="/marie" className={`${commonLinkStyle} mb-3`}>
-            🧑🏼‍🍳 Marienhof
-          </Link>
-          <Link href="/limonis" className={`${commonLinkStyle}`}>
-            🍋 Limonis
-          </Link>
+          <div className="flex flex-col gap-3 lg:flex-row">
+            <Link href="/marie" className={`${commonLinkStyle}`}>
+              🧑🏼‍🍳 Marienhof
+            </Link>
+            <Link href="/limonis" className={`${commonLinkStyle}`}>
+              🍋 Limonis
+            </Link>
+          </div>
         </div>
       </div>
     </div>
