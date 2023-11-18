@@ -119,7 +119,7 @@ declare const ColumnTypeEnum: {
     readonly Double: 3;
     readonly Numeric: 4;
     readonly Boolean: 5;
-    readonly Char: 6;
+    readonly Character: 6;
     readonly Text: 7;
     readonly Date: 8;
     readonly Time: 9;
@@ -135,7 +135,7 @@ declare const ColumnTypeEnum: {
     readonly DoubleArray: 67;
     readonly NumericArray: 68;
     readonly BooleanArray: 69;
-    readonly CharArray: 70;
+    readonly CharacterArray: 70;
     readonly TextArray: 71;
     readonly DateArray: 72;
     readonly TimeArray: 73;
@@ -658,7 +658,7 @@ export declare namespace DMMF {
         hasDefaultValue: boolean;
         default?: FieldDefault | FieldDefaultScalar | FieldDefaultScalar[];
         relationFromFields?: string[];
-        relationToFields?: any[];
+        relationToFields?: string[];
         relationOnDelete?: string;
         relationName?: string;
         documentation?: string;
@@ -1046,6 +1046,13 @@ declare interface EngineConfig {
      * in the current working directory. This usually means it has been bundled.
      */
     isBundled?: boolean;
+    /**
+     * Loads the raw wasm module for the wasm query engine. This configuration is
+     * generated specifically for each type of client, eg. Node.js client and Edge
+     * clients will have different implementations.
+     * @remarks this is a callback on purpose, we only load the wasm if needed.
+     */
+    getQueryEngineWasmModule?: () => Promise<unknown>;
 }
 
 declare type EngineEventType = 'query' | 'info' | 'warn' | 'error' | 'beforeExit';
@@ -1080,6 +1087,9 @@ export declare type Equals<A, B> = (<T>() => T extends A ? 1 : 2) extends (<T>()
 declare type Error_2 = {
     kind: 'GenericJs';
     id: number;
+} | {
+    kind: 'UnsupportedNativeDataType';
+    type: string;
 } | {
     kind: 'Postgres';
     code: string;
@@ -1526,6 +1536,13 @@ declare type GetPrismaClientConfig = {
      * runtime, this means the client will be bound to be using the Data Proxy.
      */
     noEngine?: boolean;
+    /**
+     * Loads the raw wasm module for the wasm query engine. This configuration is
+     * generated specifically for each type of client, eg. Node.js client and Edge
+     * clients will have different implementations.
+     * @remarks this is a callback on purpose, we only load the wasm if needed.
+     */
+    getQueryEngineWasmModule?: () => Promise<unknown>;
 };
 
 export declare type GetResult<P extends OperationPayload, A, O extends Operation = 'findUniqueOrThrow'> = {

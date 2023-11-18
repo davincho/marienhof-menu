@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 export default function Page() {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [uploaded, setUploaded] = useState<boolean>(false);
+
   return (
     <>
       <h1>Upload Your Avatar</h1>

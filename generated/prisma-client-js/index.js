@@ -30,12 +30,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.5.2
- * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+ * Prisma Client JS version: 5.6.0
+ * Query Engine version: e95e739751f42d8ca026f6b910f5a2dc5adeaeee
  */
 Prisma.prismaVersion = {
-  client: "5.5.2",
-  engine: "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
+  client: "5.6.0",
+  engine: "e95e739751f42d8ca026f6b910f5a2dc5adeaeee"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -139,8 +139,8 @@ const config = {
     "rootEnvPath": null
   },
   "relativePath": "../..",
-  "clientVersion": "5.5.2",
-  "engineVersion": "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a",
+  "clientVersion": "5.6.0",
+  "engineVersion": "e95e739751f42d8ca026f6b910f5a2dc5adeaeee",
   "datasourceNames": [
     "db"
   ],
@@ -178,7 +178,7 @@ if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
 
 config.runtimeDataModel = JSON.parse("{\"models\":{\"files\":{\"dbName\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"validFrom\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"url\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
-
+config.getQueryEngineWasmModule = undefined
 
 
 const { warnEnvConflicts } = require('./runtime/library')
