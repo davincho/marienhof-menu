@@ -4,7 +4,7 @@ import parse, { parseCalenderWeek } from "./../limonis.parse";
 import input from "./limonis-input.txt?raw";
 import output from "./limonis-output";
 
-describe("Limonis Menu Parsing - http://www.paulandthemonkeys.at/wochenkarte/wochenkarte_download/", () => {
+describe("Limonis Menu Parsing", () => {
   it("Should parse input accordingly", () => {
     expect(parse(input).days).toEqual(output);
 

@@ -6,7 +6,6 @@ const commonLinkStyle =
   "border-gray-200 hover:border-gray-400 border-2 text-4xl rounded-md p-2 w-full text-center";
 
 const VALID_DOMAINS = new Map<string, string>([
-  ["paulify.vercel.app", "/paul"],
   ["marienify.vercel.app", "/marie"],
   ["limonis.vercel.app", "/limonis"],
 ]);
@@ -32,9 +31,6 @@ export default async function Page() {
           </h1>
           <Link href="/marie" className={`${commonLinkStyle} mb-3`}>
             🧑🏼‍🍳 Marienhof
-          </Link>
-          <Link href="/paul" className={`${commonLinkStyle} mb-3`}>
-            🐵 Paul and the Monkeys
           </Link>
           <Link href="/limonis" className={`${commonLinkStyle}`}>
             🍋 Limonis

@@ -1,7 +1,7 @@
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-const paths = ["marie", "paul", "limonis"];
+const paths = ["marie", "limonis"];
 
 export async function GET(request: NextRequest) {
   revalidateTag("data");

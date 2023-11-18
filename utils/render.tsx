@@ -6,22 +6,6 @@ const TYPE_MAPPING = {
   FISCH: "text-blue-900 bg-blue-300",
 };
 
-export const paulRenderer = ([type, name, price]: string[]) => (
-  <>
-    <div>
-      <span
-        className={`mr-1 inline-block rounded-md p-1 text-xs ${
-          TYPE_MAPPING[type as keyof typeof TYPE_MAPPING]
-        }`}
-      >
-        {type}
-      </span>
-      {name}
-    </div>
-    <div className="ml-2 flex-none text-right">€ {price}</div>
-  </>
-);
-
 export const marienRenderer = ([name, price]: string[]) => (
   <>
     <div>{name}</div>
