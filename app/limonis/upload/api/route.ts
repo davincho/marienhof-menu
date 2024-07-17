@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { put } from "@vercel/blob";
+import { put, list, del } from "@vercel/blob";
 
 import { PrismaClient } from "../../../../generated/prisma-client-js";
 import dayjs from "../../../../utils/dayjs";
@@ -9,6 +9,16 @@ import limonisParser, {
 import pdf from "../../../pdfShim";
 
 const prisma = new PrismaClient();
+
+export async function GET() {
+  const files = await prisma.files.findMany({
+    orderBy: {
+      validFrom: "desc",
+    },
+  });
+
+  return Response.json(files);
+}
 
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
