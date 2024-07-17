@@ -13,6 +13,6 @@ export const deleteFile = async (formData: FormData) => {
 
   if (url) {
     console.log("Deleting", url);
-    await del(url);
+    await del(url.toString());
   }
 };
