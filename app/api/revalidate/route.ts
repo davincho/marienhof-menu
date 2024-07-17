@@ -1,10 +1,11 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 const paths = ["marie", "limonis"];
 
 export async function GET(request: NextRequest) {
-  revalidateTag("data");
+  revalidatePath("/marie");
+  revalidatePath("/limonis");
 
   const base = request.nextUrl.origin;
 
