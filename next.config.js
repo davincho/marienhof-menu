@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  serverComponentsExternalPackages: ["libsql"],
+  ppr: true,
   experimental: {
-    serverComponentsExternalPackages: ["libsql"],
-    ppr: true,
+    reactCompiler: true,
   },
 };
 
