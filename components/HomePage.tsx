@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 
 import DayEntry from "./DayEntry";
 import Shell from "./Shell";
+import Regenerate from "./Regenerate";
 
 const weekdayStrings = [
   "Montag",
@@ -34,6 +35,7 @@ const Home: NextPage<{
     <Shell title={`${emoji} ${title} ${emoji}`}>
       <div className="mb-2 flex items-center justify-between">
         <h2>Menü für {weekDateRange}</h2>
+        <Regenerate />
         {telNumber ? (
           <a
             href={`tel:${telNumber}`}
