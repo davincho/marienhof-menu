@@ -25,7 +25,7 @@ const workSans = WorkSans({
 async function saveSettings({ theme }: { theme: string }) {
   "use server";
 
-  cookies().delete({
+  (await cookies()).delete({
     name: "theme",
     httpOnly: false,
     path: "/",
