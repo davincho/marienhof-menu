@@ -1,4 +1,10 @@
 /* eslint-disable no-console */
+"use cache";
+
+import {
+  unstable_cacheTag as cacheTag,
+  unstable_cacheLife as cacheLife,
+} from "next/cache";
 
 import HomePage from "../../components/HomePage";
 import { limonisRenderer } from "../../utils/render";
@@ -9,6 +15,9 @@ import parser from "./../../utils/limonis.parse";
 import pdf from "./../pdfShim";
 
 const getMenu = async () => {
+  cacheTag("limonis");
+  cacheLife("minutes");
+
   const prisma = new PrismaClient();
 
   const file = await prisma.files.findFirst({
