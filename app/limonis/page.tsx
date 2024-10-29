@@ -39,7 +39,7 @@ const getMenu = async () => {
 
   console.log(`Fetching ${limonisUrl}`);
 
-  const dataBuffer = await fetch(limonisUrl, { next: { tags: ["data"] } });
+  const dataBuffer = await fetch(limonisUrl);
 
   const blobContent = await dataBuffer.arrayBuffer();
 
