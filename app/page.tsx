@@ -11,7 +11,7 @@ const VALID_DOMAINS = new Map<string, string>([
 ]);
 
 export default async function Page() {
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get("x-forwarded-host");
 
   if (host) {

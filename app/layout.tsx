@@ -6,6 +6,7 @@ import "./global.css";
 
 import ThemeToggle from "../components/ThemeToggle";
 import pgk from "../package.json";
+import { Suspense } from "react";
 
 const { repository } = pgk;
 
@@ -75,7 +76,7 @@ export default async function RootLayout({
         className={`${rubik.variable} ${workSans.variable} font-body dark:bg-slate-800 dark:text-gray-50`}
       >
         <ThemeToggle onSaveSettings={saveSettings} />
-        {children}
+        <Suspense fallback={<p>Loading ...</p>}>{children}</Suspense>
         <div className="fixed bottom-0 left-0 right-0 bg-gray-100 p-2 text-center dark:bg-slate-900">
           Developed with ❤️ in Vienna -
           <a

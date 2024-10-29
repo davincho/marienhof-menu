@@ -5,6 +5,7 @@ const nextConfig = {
   ppr: true,
   experimental: {
     reactCompiler: true,
+    dynamicIO: true,
   },
 };
 
